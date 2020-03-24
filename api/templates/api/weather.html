@@ -1,0 +1,120 @@
+{% load humanize %}
+{% load static %}
+{% load mathfilters %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'api/css/weather.css' %}">
+    <title>Should I Hang It? - {{location}}</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <!-- Logo Container -->
+    <div class="container-fluid logo">
+        <h1>Should I Hang It?</h1>
+    </div>
+
+    <!-- Location Container -->
+    <div class="container-fluid where text-center">
+        <div class="row justify-content-md-center">
+            <div class="col-6 text-center">
+                <h3>Check somewhere else?</h3>
+                <form role="search" id="locationsearch" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <input name="location" id="location" placeholder="Check anywhere!">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clothes Line Container -->
+    <div class="container-fluid clothes-area">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-6">
+                <h1 class="font-weight-bold">In {{town}}, we think:</h1>
+                {% with 'api/image/'|add:hour.icon|add:'.svg' as image_static %}
+                    <img src="{% static image_static %}">
+                {% endwith %}
+                <h2 class="text-success">{{hour.should|title}}</h2>
+                <h3 class="text-muted p-2">We estimate this will take <strong>{{dry|floatformat:2}}</strong> mins to dry</h3>
+                <p class="push">
+                <p>
+                    <strong>Currently:</strong> {{hour.summary}}<br>
+                    <strong>Last Updated:</strong> {{hour.time|naturaltime}}<br>
+                    <strong>Temperature:</strong> {{hour.temp}}°C<br>
+                    <strong>Humidity:</strong> {{hour.humidity|mul:100}}%<br>
+                    <strong>Wind Speed:</strong> {{hour.wind}} mph</p>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forecast Container -->
+    <div class="container-fluid forecast">
+        <div class="row justify-content-md-center">
+            <div class="col-12 text-center tight-md">
+                <h3>{{town}}'s Forecast</h3>
+            </div>
+            {% for f in forecast %}
+            <div class="col-4 text-center tight-md">
+                <div class="day">
+                    <span class="name">{{f.time|naturaltime}}</span>
+                    {% with 'api/image/'|add:f.icon|add:'.svg' as image_static %}
+                        <img src="{% static image_static %}">
+                    {% endwith %}
+                    <div class="stats">
+                        <div class="temp_low"><strong>Temperature: </strong>{{f.temp}}°C</div>
+                        <div class="temp_low"><strong>Wind Speed: </strong>{{f.wind}}mph</div>
+                        <div class="temp_low"><strong>Humidity: </strong>{{f.humidity|mul:100}}%</div>
+                    </div>
+                    <span class="description">
+                        {{f.summary}}
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div class="container-fluid footer text-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-6">
+                <p>The people of {{town|title}} need to hang their clothes on the line now!</p>
+                <p>If there is an error processing your town, we default back to Belfast.</p>
+                <div class="row">
+                    <div class="col-md">
+                        <p>Created</p>
+                        <a class="text-info" href="#">Aidan Donnelly</a>
+                        <br><br>
+                    </div>
+                    <div class="col-md">
+                        <p>Weather</p>
+                        <a class="text-info" href="https://darksky.net/poweredby/">Dark Sky</a>
+                        <br><br>
+                    </div>
+                    <div class="col-md">
+                        <p>Source Code</p>
+                        <a class="text-info" href="https://darksky.net/poweredby/">GitHub</a>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
