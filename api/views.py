@@ -2,7 +2,6 @@ from django.shortcuts import render
 import json
 import requests
 from datetime import datetime
-from clothes.local_settings import location_key, dark_key
 
 def weather(request):
     place = ""
@@ -11,10 +10,9 @@ def weather(request):
         place = request.POST.get("location")
     else:
         place = "Belfast"
-    
 
     # Location api
-    loc_api = location_api
+    loc_api = "c3107729449943f29e10157fc0046fce"
     loc_api_url = "https://api.opencagedata.com/geocode/v1/json?q=%s&key=%s" % (place, loc_api)
     loc_res = requests.get(loc_api_url)
     loc_data = loc_res.json()
@@ -40,7 +38,7 @@ def weather(request):
 
 
     # Weather api
-    api_key = dark_key
+    api_key = "b7921c6275bcfa517aae50d852659016"
     api_url = "https://api.darksky.net/forecast/%s/%s,%s?exclude=minutely,alerts,flags,daily&units=si" % (api_key, lat, lon)
 
     res = requests.get(api_url)
