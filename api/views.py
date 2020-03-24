@@ -8,6 +8,9 @@ def weather(request):
 
     if request.method == "POST":
         place = request.POST.get("location")
+
+        if place == "Londonderry":
+            place = "Derry"
     else:
         place = "Belfast"
 
