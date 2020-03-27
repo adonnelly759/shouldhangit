@@ -8,3 +8,6 @@ class Search(models.Model):
     location = models.CharField(max_length=255)
     ip = models.CharField(max_length=255, null=True)
     time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.location).capitalize()
