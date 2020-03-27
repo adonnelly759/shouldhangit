@@ -25,7 +25,7 @@
                     <img src="{% static image_static %}">
                 {% endwith %}
                 <h2 class="text-success">{{hour.should|title}}</h2>
-                <h3 class="text-muted p-2">We estimate this will take <strong>{{hour.dryTime|floatformat:2}}</strong> mins to dry</h3>
+                <h3 class="text-muted text-center p-2">We estimate this will take <strong>{{hour.dryTime|floatformat:0}}</strong> mins to dry</h3>
                 <p class="push">
                 <p>
                     <strong>Currently:</strong> {{hour.summary}}<br>
@@ -56,7 +56,7 @@
                         <div class="temp_low"><strong>Wind Speed: </strong>{{f.wind}}mph</div>
                         <div class="temp_low"><strong>Humidity: </strong>{{f.humidity|mul:100}}%</div>
                         <div class="temp_low"><strong>Prediction: </strong>{{f.should|title}}</div>
-                        <div class="temp_low"><strong>Dry Time: </strong>{{f.dryTime|floatformat:2}} mins</div>
+                        <div class="temp_low"><strong>Dry Time: </strong>{{f.dryTime|floatformat:0}} mins</div>
                     </div>
                     <span class="description">
                         {{f.summary}}

@@ -36,8 +36,8 @@ class Weather(View):
         forecast = get_next(api_data, place)
         return render(request, self.template_name, {"hour": forecast[0], "location": place.capitalize(), "town": place.capitalize(), "forecast": forecast[1:4]})
 
-    def post(self, request, location):
-        location = request.POST.get('location')
+    def post(self, request, location=None):
+        new_location = request.POST['location']
         ip = get_ip_address(request) # Obtain IP address
-        addSearch = Search.objects.create(location=place, ip=ip).save() # Save search to database
-        return redirect("should:weather", location=location)
+        addSearch = Search.objects.create(location=new_location, ip=ip).save() # Save search to database
+        return redirect("should:weather", location=new_location)
