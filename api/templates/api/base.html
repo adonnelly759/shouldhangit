@@ -1,0 +1,66 @@
+{% load humanize %}
+{% load static %}
+{% load mathfilters %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'api/css/weather.css' %}">
+    <link rel="icon" href="{% static 'api/image/favicon.ico' %}" type="image/x-icon">
+    <title>Should I Hang It? - {{location}}</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <!-- Logo Container -->
+    <div class="container-fluid logo">
+        <h1>Should I Hang It?</h1>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer Container -->
+    <div class="container-fluid footer pb-2 text-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-6">
+                <p>The people of {{town|title}} need to hang their clothes on the line now!</p>
+                <div class="row">
+                    <div class="col-md">
+                        <p>Created</p>
+                        <a class="text-info" href="#">Aidan Donnelly</a>
+                        <br><br>
+                    </div>
+                    <div class="col-md">
+                        <p>Weather</p>
+                        <a class="text-info" href="https://darksky.net/poweredby/">Dark Sky</a>
+                        <br><br>
+                    </div>
+                    <div class="col-md">
+                        <p>Source Code</p>
+                        <a class="text-info" href="https://github.com/adonnelly759/shouldhangit">GitHub</a>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <p>Inspired by</p>
+                        <a class="text-primary" href="https://www.taps-aff.co.uk/">TapsAff</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
