@@ -15,7 +15,7 @@ DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 if not DEBUG:
-    ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk', 'localhost']
+    ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk']
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
