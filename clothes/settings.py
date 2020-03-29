@@ -13,7 +13,10 @@ SECRET_KEY = '4=i(45ko7t3jp%pruz)1(a%t3u=q*bsn#khqe$24)3n#f*pwg9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk']
+if not DEBUG:
+    ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk']
+else:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
