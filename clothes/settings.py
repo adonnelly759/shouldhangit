@@ -12,9 +12,10 @@ SECRET_KEY = '4=i(45ko7t3jp%pruz)1(a%t3u=q*bsn#khqe$24)3n#f*pwg9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 if not DEBUG:
-    ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk']
+    ALLOWED_HOSTS = ['www.shouldihangit.co.uk', 'shouldihangit.co.uk', 'localhost']
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -27,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'mathfilters',
@@ -42,10 +42,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    INSTALLED_APPS += [
+        'whitenoise.runserver_nostatic'
+    ]
+
+    MIDDLEWARE += [
+        'whitenoise.middleware.WhiteNoiseMiddleware' 
+    ]
 
 ROOT_URLCONF = 'clothes.urls'
 
