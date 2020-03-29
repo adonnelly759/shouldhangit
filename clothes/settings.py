@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if not DEBUG:
+""" if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     INSTALLED_APPS += [
@@ -53,7 +53,7 @@ if not DEBUG:
 
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware' 
-    ]
+    ] """
 
 ROOT_URLCONF = 'clothes.urls'
 
