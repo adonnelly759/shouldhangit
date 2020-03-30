@@ -45,7 +45,7 @@
                 <h3>{{town}}'s Forecast</h3>
             </div>
             {% for f in forecast %}
-            <div class="col-4 text-center tight-md">
+            <div class="col-sm-12 col-md-4 text-center tight-md">
                 <div class="day">
                     <span class="name">{{f.time|naturaltime}}</span>
                     {% with 'api/image/'|add:f.icon|add:'.svg' as image_static %}
