@@ -7,6 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Need to know if you can ideally hang out your clothes? Check it here!">
     <meta property="og:url" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.META.HTTP_HOST }}"/> 
     <meta property="og:title" content="{{ location }}, Should I Hang My Clothes Out?"/> 
     <meta property="og:image" content="{% if request.is_secure %}https{% else %}http{% endif %}://{{ request.META.HTTP_HOST }}{% static 'api/image/logo.png' %}"/>
@@ -16,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'api/css/weather.css' %}">
     <link rel="icon" href="{% static 'api/image/favicon.ico' %}" type="image/x-icon">
-    <link rel="search" type="application/opensearchdescription+xml" title="Should I Hang It?" href="{% static 'api/opensearch.xml' %}">
+    <link rel="search" type="application/opensearchdescription+xml" title="Should I Hang It?" href="/opensearch.xml">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162036402-1"></script>

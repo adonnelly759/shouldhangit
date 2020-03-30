@@ -40,4 +40,5 @@ class Weather(View):
         new_location = request.POST['location']
         ip = get_ip_address(request) # Obtain IP address
         addSearch = Search.objects.create(location=new_location, ip=ip).save() # Save search to database
-        return redirect("should:weather", location=new_location)
+        request.session['location'] = new_location
+        return redirect("should:weather")
