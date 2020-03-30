@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /admin
+Allow: /
+
+Sitemap: https://www.shouldihangit.co.uk/sitemap.xml
